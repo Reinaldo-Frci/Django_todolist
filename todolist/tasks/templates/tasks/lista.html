@@ -1,15 +1,18 @@
 {% extends "tasks/layout.html" %}
-
+{% load static %}
+<head>
+    <script src="{% static 'tasks/js/lista.js' %}"></script>
+</head>
 {% block body %}
         <h1>Lista de Tarefas</h1>
 <a href="{% url 'nova_tarefa' %}">Nova Tarefa</a>
 <ul>
   {% for tarefa in tarefas %}
     <li>
-      <strong> {{ tarefa.titulo }}</strong> - 
-      {% if tarefa.concluida %}✅{% else %}❌{% endif %}
-      <a href="{% url 'editar_tarefa' tarefa.id %}">Editar</a> |
-      <a href="{% url 'excluir_tarefa' tarefa.id %}">Excluir</a>
+        <strong> {{ tarefa.titulo }}</strong> - 
+        {% if tarefa.concluida %}✅{% else %}❌{% endif %}
+        <a href="{% url 'editar_tarefa' tarefa.id %}">Editar</a> |
+        <a href="{% url 'excluir_tarefa' tarefa.id %}">Excluir</a>
     </li>
   {% endfor %}
 
